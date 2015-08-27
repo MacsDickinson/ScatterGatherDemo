@@ -20,8 +20,6 @@ namespace ScatterGatherDemo
                 .Select(t => (IService<TServiceRequest, TServiceResponse>) Activator.CreateInstance(t))
                 .Select(s => s.Execute(command));
 
-            //Task.WaitAll(serviceTasks);
-
             return await aggregator.Aggregate(serviceTasks);
         }
 
